@@ -2,8 +2,6 @@ package hello.test.reduct.testapp;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 //Not imported by the default Studio template
 import android.widget.Button;
@@ -16,6 +14,7 @@ public class MainActivity extends ActionBarActivity {
     private Button helloButton;
     private View.OnClickListener helloListener;
     private TextView text;
+    private boolean showHello = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,17 @@ public class MainActivity extends ActionBarActivity {
     private void sayHello() {
         text = (TextView) findViewById(R.id.text);
 
-        text.setText("Hello World!");
+
+
+        //Store a state here
+        if (!showHello) {
+            text.setText("Hello World!");
+            showHello = true;
+        }
+        else {
+            text.setText("");
+            showHello = false;
+        }
 
 
 
